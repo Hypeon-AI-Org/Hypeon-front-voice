@@ -12,10 +12,12 @@ import BenefitsSection from './BenefitsSection';
 import FAQSection from './FAQSection';
 import CTASection from './CTASection';
 import Footer from './Footer';
+import BookDemoModal from './BookDemoModal';
 
 const LandingPage = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -26,6 +28,8 @@ const LandingPage = () => {
   }, []);
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
@@ -50,18 +54,21 @@ const LandingPage = () => {
         scrolled={scrolled} 
         isMenuOpen={isMenuOpen} 
         toggleMenu={toggleMenu} 
-        scrollToSection={scrollToSection} 
+        scrollToSection={scrollToSection}
+        openModal={openModal}
       />
       
-      <HeroSection />
+      <HeroSection openModal={openModal} />
       <ProblemSection />
       <SolutionSection />
       <HowItWorksSection />
       <IndustriesSection />
       <BenefitsSection />
       <FAQSection />
-      <CTASection />
+      <CTASection openModal={openModal} />
       <Footer />
+      
+      <BookDemoModal isOpen={isModalOpen} onClose={closeModal} />
     </div>
   );
 };

@@ -2,7 +2,11 @@
 
 import { CheckCircle, ArrowRight } from 'lucide-react';
 
-const HeroSection = () => {
+interface HeroSectionProps {
+  openModal: () => void;
+}
+
+const HeroSection = ({ openModal }: HeroSectionProps) => {
   return (
     <header className="relative pt-40 pb-32 px-6 overflow-hidden">
       <div className="container mx-auto text-center max-w-5xl relative z-10">
@@ -36,7 +40,10 @@ const HeroSection = () => {
         </div>
         
         <div className="flex flex-col sm:flex-row items-center justify-center gap-5">
-          <button className="group relative px-8 py-4 rounded-xl bg-gradient-to-b from-emerald-400 to-emerald-600 text-black font-bold text-lg hover:to-emerald-300 transition-all duration-300 shadow-[0_0_40px_rgba(16,185,129,0.2)] hover:shadow-[0_0_60px_rgba(16,185,129,0.4)] hover:-translate-y-1">
+          <button 
+            onClick={openModal}
+            className="group relative px-8 py-4 rounded-xl bg-gradient-to-b from-emerald-400 to-emerald-600 text-black font-bold text-lg hover:to-emerald-300 transition-all duration-300 shadow-[0_0_40px_rgba(16,185,129,0.2)] hover:shadow-[0_0_60px_rgba(16,185,129,0.4)] hover:-translate-y-1"
+          >
             <span className="flex items-center gap-2">
               Book a Live Demo <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </span>

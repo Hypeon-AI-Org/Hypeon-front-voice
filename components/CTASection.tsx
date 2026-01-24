@@ -2,7 +2,11 @@
 
 import { Phone } from 'lucide-react';
 
-const CTASection = () => {
+interface CTASectionProps {
+  openModal: () => void;
+}
+
+const CTASection = ({ openModal }: CTASectionProps) => {
   return (
     <section className="py-32 relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-b from-[#020408] to-emerald-950/30"></div>
@@ -22,7 +26,10 @@ const CTASection = () => {
         </p>
         
         <div className="flex flex-col items-center gap-6">
-           <button className="px-12 py-6 rounded-full bg-emerald-500 text-black font-bold text-xl hover:bg-emerald-400 hover:scale-105 transition-all duration-300 shadow-[0_0_50px_rgba(16,185,129,0.3)]">
+           <button 
+             onClick={openModal}
+             className="px-12 py-6 rounded-full bg-emerald-500 text-black font-bold text-xl hover:bg-emerald-400 hover:scale-105 transition-all duration-300 shadow-[0_0_50px_rgba(16,185,129,0.3)]"
+           >
              Book a Live Demo
            </button>
            <p className="text-sm text-slate-500">See it answer a real call in real time.</p>

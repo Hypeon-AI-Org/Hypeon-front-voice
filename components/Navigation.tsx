@@ -7,9 +7,10 @@ interface NavigationProps {
   isMenuOpen: boolean;
   toggleMenu: () => void;
   scrollToSection: (id: string) => void;
+  openModal: () => void;
 }
 
-const Navigation = ({ scrolled, isMenuOpen, toggleMenu, scrollToSection }: NavigationProps) => {
+const Navigation = ({ scrolled, isMenuOpen, toggleMenu, scrollToSection, openModal }: NavigationProps) => {
   const menuItems = ['The Problem', 'Solution', 'How It Works', 'Industries', 'FAQs'];
 
   return (
@@ -34,7 +35,10 @@ const Navigation = ({ scrolled, isMenuOpen, toggleMenu, scrollToSection }: Navig
               {item}
             </button>
           ))}
-          <button className="px-5 py-2 rounded-lg bg-emerald-500 text-black font-semibold hover:bg-emerald-400 transition-all duration-300 shadow-[0_0_20px_rgba(16,185,129,0.3)] hover:shadow-[0_0_30px_rgba(16,185,129,0.5)]">
+          <button 
+            onClick={openModal}
+            className="px-5 py-2 rounded-lg bg-emerald-500 text-black font-semibold hover:bg-emerald-400 transition-all duration-300 shadow-[0_0_20px_rgba(16,185,129,0.3)] hover:shadow-[0_0_30px_rgba(16,185,129,0.5)]"
+          >
             Book Demo
           </button>
         </div>
@@ -56,7 +60,12 @@ const Navigation = ({ scrolled, isMenuOpen, toggleMenu, scrollToSection }: Navig
               {item}
             </button>
           ))}
-          <button className="w-full py-3 rounded-lg bg-emerald-500 text-black font-bold">Book Demo</button>
+          <button 
+            onClick={openModal}
+            className="w-full py-3 rounded-lg bg-emerald-500 text-black font-bold"
+          >
+            Book Demo
+          </button>
         </div>
       )}
     </nav>

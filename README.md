@@ -41,6 +41,7 @@ Open [http://localhost:3000](http://localhost:3000) to view the site.
 - **Performance Optimized** - 110 KB First Load JS
 - **SEO Ready** - Complete meta tags, sitemap, and robots.txt
 - **PWA Ready** - Web manifest included
+- **Book Demo Form** - Popup form with email integration (sends to yash@hypeon.ai)
 
 ## 🛠️ Tech Stack
 
@@ -99,6 +100,24 @@ Hypeon-front-voice/
 - `npm run lint:fix` - Fix ESLint errors
 - `npm run type-check` - Check TypeScript types
 - `npm run check` - Run type-check and lint
+
+## 📧 Book Demo Feature
+
+The site includes a fully functional "Book Demo" popup form that sends submissions to yash@hypeon.ai using Gmail SMTP.
+
+**Setup:**
+1. Enable 2-Step Verification on your Gmail account
+2. Create an App Password from https://myaccount.google.com/security
+3. Add to `.env.local`:
+   ```
+   GMAIL_USER=your-email@gmail.com
+   GMAIL_APP_PASSWORD=your-16-char-password
+   ```
+4. Start the dev server and test!
+
+📖 See [BOOK_DEMO_SETUP.md](./BOOK_DEMO_SETUP.md) for complete setup instructions.
+
+**Benefits:** FREE, 500 emails/day, reliable Gmail servers, professional HTML emails.
 
 ## 🚢 Deployment Options
 
