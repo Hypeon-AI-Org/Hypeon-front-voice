@@ -1,0 +1,57 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: #020408;
+    --foreground: #cbd5e1;
+  }
+}
+
+@layer utilities {
+  @keyframes shine {
+    0% { background-position: 200% center; }
+    100% { background-position: -200% center; }
+  }
+  
+  .animate-shine {
+    background-size: 200% auto;
+    animation: shine 4s linear infinite;
+  }
+  
+  .metallic-text {
+    background: linear-gradient(
+      to right,
+      #d1fae5 20%,
+      #10b981 30%,
+      #059669 70%,
+      #d1fae5 80%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    background-size: 200% auto;
+    animation: shine 5s linear infinite;
+  }
+  
+  .glass-card {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 0 0 0 1px rgba(0,0,0,1), 0 4px 20px rgba(0,0,0,0.5);
+  }
+  
+  .glass-card:hover {
+    border-color: rgba(16, 185, 129, 0.3);
+    box-shadow: 0 0 30px rgba(16, 185, 129, 0.1);
+    transform: translateY(-2px);
+  }
+  
+  .grid-bg {
+    background-image: 
+      linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 30px 30px;
+  }
+}

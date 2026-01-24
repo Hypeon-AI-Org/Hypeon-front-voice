@@ -1,0 +1,85 @@
+'use client';
+
+import { User, Scissors, Wrench, Clock, LucideIcon } from 'lucide-react';
+
+interface BentoCardProps {
+  icon: LucideIcon;
+  iconColor: string;
+  title: string;
+  desc: string;
+  delay: string;
+}
+
+const BentoCard = ({ icon: Icon, iconColor, title, desc, delay }: BentoCardProps) => (
+  <div className="glass-card p-8 rounded-3xl flex flex-col justify-between h-48 group hover:-translate-y-2 transition-transform duration-500" style={{ animationDelay: `${delay}ms` }}>
+    <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center mb-4 border border-white/5 group-hover:border-emerald-500/30">
+      <Icon className={iconColor} />
+    </div>
+    <div>
+       <h3 className="text-xl font-bold text-white mb-2">{title}</h3>
+       <p className="text-slate-400 text-sm leading-relaxed">{desc}</p>
+    </div>
+  </div>
+);
+
+const ProblemSection = () => {
+  return (
+    <section id="the-problem" className="py-32 relative">
+      <div className="container mx-auto px-6">
+        <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+           <div className="max-w-2xl">
+              <div className="text-emerald-500 font-bold mb-2 uppercase tracking-widest text-xs">The Problem</div>
+              <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
+                Here&apos;s the thing. <br/>
+                <span className="text-slate-400">Your phone rings when:</span>
+              </h2>
+              <p className="text-slate-400 text-lg border-l-2 border-emerald-500/30 pl-6 italic">
+                &quot;Those calls don&apos;t go to voicemail. They go to your competitor.&quot;
+              </p>
+           </div>
+           <div className="flex items-center gap-2 text-red-400 bg-red-500/10 px-4 py-2 rounded-full border border-red-500/20">
+              <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
+              Missed calls = missed revenue
+           </div>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <BentoCard 
+            icon={User}
+            iconColor="text-red-400"
+            title="Fully Booked"
+            desc="You're fully booked and understaffed."
+            delay="0"
+          />
+           <BentoCard 
+            icon={Scissors}
+            iconColor="text-orange-400"
+            title="With a Customer"
+            desc="You're with a customer or patient."
+            delay="100"
+          />
+           <BentoCard 
+            icon={Wrench}
+            iconColor="text-blue-400"
+            title="On-Site"
+            desc="You're on-site doing the work."
+            delay="200"
+          />
+          <BentoCard 
+            icon={Clock}
+            iconColor="text-purple-400"
+            title="Closed"
+            desc="Your business is closed."
+            delay="300"
+          />
+        </div>
+        
+        <div className="mt-8 text-center">
+          <p className="text-slate-500 text-sm">And voicemail doesn&apos;t fix that.</p>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default ProblemSection;
