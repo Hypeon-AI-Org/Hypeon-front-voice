@@ -51,17 +51,17 @@ export default function DentistryPage() {
         {/* Hero Section */}
         <section className="py-16">
           <div className="container mx-auto px-6">
-            <Link href="/use-cases" className="text-emerald-500 hover:text-emerald-400 text-sm mb-6 inline-flex items-center gap-2">
+            <Link href="/use-cases" className="text-emerald-600 hover:text-emerald-700 text-sm mb-6 inline-flex items-center gap-2">
               <ArrowLeft className="w-4 h-4" /> Back to Use Cases
             </Link>
             <div className="max-w-4xl">
-              <div className="w-20 h-20 rounded-2xl bg-emerald-500/20 flex items-center justify-center mb-6">
-                <Stethoscope className="w-10 h-10 text-emerald-400" />
+              <div className="w-20 h-20 rounded-2xl bg-emerald-100 flex items-center justify-center mb-6">
+                <Stethoscope className="w-10 h-10 text-emerald-600" />
               </div>
-              <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
                 Perfect for Dental Practices
               </h2>
-              <p className="text-xl text-slate-400 leading-relaxed mb-8">
+              <p className="text-xl text-gray-600 leading-relaxed mb-8">
                 Dental practices face unique challenges: managing high call volumes during business hours, 
                 capturing after-hours inquiries, and handling new patient intake. Our AI voice receptionist 
                 handles all of this automatically, so you can focus on providing excellent dental care.
@@ -71,7 +71,7 @@ export default function DentistryPage() {
         </section>
 
         {/* Benefits Grid */}
-        <section className="py-16 bg-white/[0.02] border-y border-white/5">
+        <section className="py-16 bg-emerald-50/50 border-y border-emerald-200/60">
           <div className="container mx-auto px-6">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-12 text-center">
               Key Benefits for Dental Practices

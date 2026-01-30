@@ -68,22 +68,22 @@ export default function BlogPage() {
                 <Link 
                   key={post.id}
                   href={`/blog/${post.id}`}
-                  className="glass-card p-6 rounded-2xl hover:border-emerald-500/30 transition-all group"
+                  className="glass-card p-6 rounded-2xl hover:border-emerald-400 transition-all group"
                 >
-                  <div className="flex items-center gap-2 text-sm text-slate-500 mb-4">
+                  <div className="flex items-center gap-2 text-sm text-gray-500 mb-4">
                     <Calendar className="w-4 h-4" />
                     <span>{post.date}</span>
-                    <span className="px-2 py-1 bg-emerald-500/20 text-emerald-400 rounded text-xs">
+                    <span className="px-2 py-1 bg-emerald-100 text-emerald-700 rounded text-xs">
                       {post.category}
                     </span>
                   </div>
-                  <h3 className="text-xl font-bold text-white mb-3 group-hover:text-emerald-400 transition-colors">
+                  <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-emerald-600 transition-colors">
                     {post.title}
                   </h3>
-                  <p className="text-slate-400 mb-4 leading-relaxed">
+                  <p className="text-gray-600 mb-4 leading-relaxed">
                     {post.excerpt}
                   </p>
-                  <div className="flex items-center gap-2 text-emerald-500 font-medium text-sm group-hover:gap-3 transition-all">
+                  <div className="flex items-center gap-2 text-emerald-600 font-medium text-sm group-hover:gap-3 transition-all">
                     Read more <ArrowRight className="w-4 h-4" />
                   </div>
                 </Link>
@@ -95,7 +95,7 @@ export default function BlogPage() {
               <div className="glass-card p-8 rounded-2xl max-w-2xl mx-auto">
                 <h3 className="text-2xl font-bold text-gray-900 mb-4">More Content Coming Soon</h3>
                 <p className="text-gray-600 mb-6">
-                  We're constantly publishing new articles about AI receptionists, business automation, and customer service best practices.
+                  We&apos;re constantly publishing new articles about AI receptionists, business automation, and customer service best practices.
                 </p>
                 <p className="text-gray-500 text-sm">
                   Subscribe to our newsletter to get notified when we publish new content.

@@ -19,11 +19,11 @@ const FeaturesIntegrationsSection = ({ openModal, openVoiceModal }: FeaturesInte
   ];
 
   return (
-    <section className="py-32 bg-emerald-50/60">
-      <div className="container mx-auto px-6">
+    <section className="py-16 sm:py-24 md:py-32 bg-emerald-50/60">
+      <div className="container mx-auto px-4 sm:px-6">
         <div className="max-w-6xl mx-auto">
           {/* Header */}
-          <div className="text-center mb-16">
+          <div className="text-center mb-10 sm:mb-16">
             <p className="text-base font-normal text-emerald-800 mb-3">
               Features & Integrations
             </p>
@@ -147,10 +147,10 @@ const FeaturesIntegrationsSection = ({ openModal, openVoiceModal }: FeaturesInte
           </div>
 
           {/* CTA Buttons - same line */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-4">
             <button
               onClick={openModal}
-              className="w-full max-w-[280px] px-7 py-3 rounded-full bg-emerald-600 text-white font-semibold text-sm hover:bg-emerald-700 transition-all duration-300 shadow-lg flex items-center justify-center gap-2"
+              className="w-full max-w-[280px] px-7 py-3.5 min-h-[48px] rounded-full bg-emerald-600 text-white font-semibold text-sm hover:bg-emerald-700 transition-all duration-300 shadow-lg flex items-center justify-center gap-2 touch-manipulation mx-auto sm:mx-0"
             >
               <Calendar className="w-4 h-4" />
               Book Free Demo
@@ -158,7 +158,7 @@ const FeaturesIntegrationsSection = ({ openModal, openVoiceModal }: FeaturesInte
             <button
               type="button"
               onClick={() => openVoiceModal?.()}
-              className="w-full max-w-[280px] px-7 py-3 rounded-full bg-white border-2 border-emerald-600 text-emerald-600 font-semibold text-sm hover:bg-emerald-50 transition-all duration-300 flex items-center justify-center gap-2"
+              className="w-full max-w-[280px] px-7 py-3.5 min-h-[48px] rounded-full bg-white border-2 border-emerald-600 text-emerald-600 font-semibold text-sm hover:bg-emerald-50 transition-all duration-300 flex items-center justify-center gap-2 touch-manipulation mx-auto sm:mx-0"
             >
               <Phone className="w-4 h-4" />
               Call Demo Receptionist

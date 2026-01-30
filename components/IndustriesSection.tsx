@@ -21,10 +21,10 @@ const IndustryCard = ({ icon: Icon, title, desc }: IndustryCardProps) => (
 
 const IndustriesSection = () => {
   return (
-    <section id="industries" className="py-32 bg-white border-t border-emerald-200">
-      <div className="container mx-auto px-6">
-         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-5xl font-bold text-gray-900 mb-6">
+    <section id="industries" className="py-16 sm:py-24 md:py-32 bg-white border-t border-emerald-200">
+      <div className="container mx-auto px-4 sm:px-6">
+         <div className="text-center mb-10 sm:mb-16">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 sm:mb-6">
             Built for <span className="text-emerald-600">Real Local Businesses</span>
           </h2>
           <p className="text-gray-600">Same system. Tailored to how your business actually works.</p>
@@ -39,7 +39,7 @@ const IndustriesSection = () => {
            <IndustryCard 
               icon={Stethoscope} 
               title="Dentists" 
-              desc="Books, reschedules, and manages new patient calls — even after hours." 
+              desc="Books, reschedules, and manages new patient calls even after hours." 
            />
            <IndustryCard 
               icon={Scissors} 

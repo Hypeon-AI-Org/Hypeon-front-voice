@@ -29,7 +29,7 @@ const ProblemSection = () => {
         <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
            <div className="max-w-2xl">
               <div className="text-emerald-600 font-bold mb-2 uppercase tracking-widest text-xs">The Problem</div>
-              <h2 className="text-3xl md:text-5xl font-bold text-gray-900 mb-6">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 sm:mb-6">
                 Here&apos;s the thing. <br/>
                 <span className="text-gray-700">Your phone rings when:</span>
               </h2>

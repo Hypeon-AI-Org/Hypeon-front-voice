@@ -183,19 +183,19 @@ const AIPhoneSupportSection = ({ openVoiceModal }: AIPhoneSupportSectionProps) =
   }, [isPlaying, stopPlayback, resumePlayback, startPlayback]);
 
   return (
-    <section className="py-32 bg-white relative">
+    <section className="py-16 sm:py-24 md:py-32 bg-white relative overflow-x-hidden">
       {/* Subtle Grid Pattern Background */}
       <div className="absolute inset-0 opacity-[0.03]" style={{
         backgroundImage: 'linear-gradient(to right, #000 1px, transparent 1px), linear-gradient(to bottom, #000 1px, transparent 1px)',
         backgroundSize: '40px 40px'
       }}></div>
 
-      <div className="container mx-auto px-6 relative z-10">
+      <div className="container mx-auto px-4 sm:px-6 relative z-10">
         <div className="max-w-7xl mx-auto">
           {/* Header Section - Title Left, Description Right */}
-          <div className="grid md:grid-cols-2 gap-12 mb-20 items-start">
+          <div className="grid md:grid-cols-2 gap-8 sm:gap-12 mb-12 sm:mb-20 items-start">
             <div>
-              <h2 className="text-3xl md:text-4xl font-normal text-gray-900 leading-tight">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-normal text-gray-900 leading-tight">
                 <span className="block">AI Phone Support That</span>
                 <span className="block">Sounds Remarkably Human.</span>
               </h2>
@@ -207,10 +207,10 @@ const AIPhoneSupportSection = ({ openVoiceModal }: AIPhoneSupportSectionProps) =
             </div>
           </div>
 
-          {/* Central Card — Agent box with voice demo */}
-          <div className="w-full bg-white/40 backdrop-blur-xl rounded-[30px] p-5 md:p-6 mb-20 relative overflow-hidden border border-white/50" style={{ boxShadow: 'inset 0 2px 10px rgba(0, 0, 0, 0.1), 0 4px 20px rgba(0, 0, 0, 0.05)' }}>
-            <div className="grid md:grid-cols-2 gap-3 items-stretch relative">
-              {/* Left Side — Agent label, transcript, Play button (stays in left column, wraps at spaces) */}
+          {/* Central Card-Agent box with voice demo */}
+          <div className="w-full bg-white/40 backdrop-blur-xl rounded-2xl md:rounded-[30px] p-4 sm:p-5 md:p-6 mb-12 sm:mb-20 relative overflow-hidden border border-white/50" style={{ boxShadow: 'inset 0 2px 10px rgba(0, 0, 0, 0.1), 0 4px 20px rgba(0, 0, 0, 0.05)' }}>
+            <div className="grid md:grid-cols-2 gap-4 sm:gap-3 items-stretch relative">
+              {/* Left Side-Agent label, transcript, Play button (stays in left column, wraps at spaces) */}
               <div className="relative z-10 flex flex-col justify-center min-w-0">
                 <div className="mb-3">
                   <span className="text-emerald-600 font-semibold text-sm uppercase tracking-wide">
@@ -239,7 +239,7 @@ const AIPhoneSupportSection = ({ openVoiceModal }: AIPhoneSupportSectionProps) =
                           aria-hidden
                         />
                       )}
-                      {/* Static text — no movement */}
+                      {/* Static text-no movement */}
                       <p
                         className={`relative z-10 w-full max-w-full text-2xl md:text-3xl font-normal leading-tight text-black bg-transparent transition-opacity duration-200 ${
                           subtitle.exiting
@@ -270,7 +270,7 @@ const AIPhoneSupportSection = ({ openVoiceModal }: AIPhoneSupportSectionProps) =
                       </p>
                     </>
                   ) : !isPlaying ? (
-                    <p className="text-2xl md:text-3xl font-normal text-gray-900 leading-tight">
+                    <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-normal text-gray-900 leading-tight">
                       Hi, thanks for calling BrightSmile Dental Clinic. How can I help?
                     </p>
                   ) : (
@@ -281,7 +281,7 @@ const AIPhoneSupportSection = ({ openVoiceModal }: AIPhoneSupportSectionProps) =
                 <button
                   type="button"
                   onClick={handlePlayStopClick}
-                  className="w-fit px-5 py-2.5 bg-gray-800 text-white rounded-full font-semibold flex items-center gap-2 hover:bg-gray-700 transition-colors shadow-md text-sm"
+                  className="w-fit min-h-[44px] px-5 py-2.5 bg-gray-800 text-white rounded-full font-semibold flex items-center gap-2 hover:bg-gray-700 transition-colors shadow-md text-sm touch-manipulation"
                 >
                   {isPlaying ? (
                     <>
@@ -306,18 +306,18 @@ const AIPhoneSupportSection = ({ openVoiceModal }: AIPhoneSupportSectionProps) =
                     fill
                     sizes="(max-width: 768px) 100vw, 520px"
                     className="object-cover scale-[1.15]"
-                    priority
+                    loading="lazy"
                   />
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Hidden audio element — single element, one file per line, onended triggers next */}
+          {/* Hidden audio element-single element, one file per line, onended triggers next */}
           <audio ref={audioRef} preload="metadata" className="hidden" />
 
           {/* Features Grid */}
-          <div className="grid md:grid-cols-3 gap-8 mb-12">
+          <div className="grid md:grid-cols-3 gap-6 sm:gap-8 mb-10 sm:mb-12">
             <div>
               <Zap className="w-6 h-6 text-gray-900 mb-2" strokeWidth={2} />
               <h3 className="text-base font-normal text-gray-900 mb-2">Fast, Thoughtful Responses</h3>
@@ -336,7 +336,7 @@ const AIPhoneSupportSection = ({ openVoiceModal }: AIPhoneSupportSectionProps) =
               <FileText className="w-6 h-6 text-gray-900 mb-2" strokeWidth={2} />
               <h3 className="text-base font-normal text-gray-900 mb-2">Integrated Into Your Systems</h3>
               <p className="text-sm text-gray-600 leading-relaxed font-normal">
-                Automates scheduling, changes, lead intake, and updating your records — freeing your team from admin.
+                Automates scheduling, changes, lead intake, and updating your records, freeing your team from admin.
               </p>
             </div>
           </div>
@@ -346,7 +346,7 @@ const AIPhoneSupportSection = ({ openVoiceModal }: AIPhoneSupportSectionProps) =
             <button
               type="button"
               onClick={() => openVoiceModal?.()}
-              className="px-7 py-3 rounded-full bg-emerald-600 text-white font-semibold text-sm hover:bg-emerald-700 transition-all duration-300 flex items-center gap-2"
+              className="px-7 py-3.5 min-h-[48px] rounded-full bg-emerald-600 text-white font-semibold text-sm hover:bg-emerald-700 transition-all duration-300 flex items-center justify-center gap-2 touch-manipulation"
             >
               <Phone className="w-4 h-4" />
               Start A Conversation

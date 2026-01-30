@@ -71,7 +71,7 @@ export default function HealthcarePage() {
         </section>
 
         {/* Benefits Grid */}
-        <section className="py-16 bg-white/[0.02] border-y border-white/5">
+        <section className="py-16 bg-emerald-50/50 border-y border-emerald-200/60">
           <div className="container mx-auto px-6">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-12 text-center">
               Key Benefits for Healthcare Practices

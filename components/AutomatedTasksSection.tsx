@@ -1,17 +1,18 @@
 'use client';
 
-import { Zap, Calendar, Phone, Users, ArrowRight, CheckCircle } from 'lucide-react';
+import { Zap, Calendar, Phone, Users, CheckCircle } from 'lucide-react';
 
 interface AutomatedTasksSectionProps {
   openModal: () => void;
+  openVoiceModal?: () => void;
 }
 
-const AutomatedTasksSection = ({ openModal }: AutomatedTasksSectionProps) => {
+const AutomatedTasksSection = ({ openModal, openVoiceModal }: AutomatedTasksSectionProps) => {
   return (
-    <section className="py-32 bg-emerald-50">
-      <div className="container mx-auto px-6">
+    <section className="py-16 sm:py-24 md:py-32 bg-emerald-50">
+      <div className="container mx-auto px-4 sm:px-6">
         <div className="max-w-6xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
+          <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 items-center mb-12 sm:mb-16">
             {/* Left: Title + description + features */}
             <div className="space-y-8">
               <div>
@@ -100,10 +101,10 @@ const AutomatedTasksSection = ({ openModal }: AutomatedTasksSectionProps) => {
             </div>
           </div>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-4">
             <button 
               onClick={openModal}
-              className="px-7 py-3 rounded-full bg-emerald-600 text-white font-semibold text-sm hover:bg-emerald-700 transition-all duration-300 shadow-lg flex items-center gap-2"
+              className="px-7 py-3.5 min-h-[48px] rounded-full bg-emerald-600 text-white font-semibold text-sm hover:bg-emerald-700 transition-all duration-300 shadow-lg flex items-center justify-center gap-2 touch-manipulation"
             >
               <Calendar className="w-4 h-4" />
               Book Free Demo
@@ -111,7 +112,7 @@ const AutomatedTasksSection = ({ openModal }: AutomatedTasksSectionProps) => {
             <button
               type="button"
               onClick={() => openVoiceModal?.()}
-              className="px-7 py-3 rounded-full bg-white border-2 border-emerald-600 text-emerald-600 font-semibold text-sm hover:bg-emerald-50 transition-all duration-300 flex items-center gap-2"
+              className="px-7 py-3.5 min-h-[48px] rounded-full bg-white border-2 border-emerald-600 text-emerald-600 font-semibold text-sm hover:bg-emerald-50 transition-all duration-300 flex items-center justify-center gap-2 touch-manipulation"
             >
               <Phone className="w-4 h-4" />
               Call Demo Receptionist

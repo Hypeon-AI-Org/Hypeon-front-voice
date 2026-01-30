@@ -49,21 +49,21 @@ const PrivacyPageContent = () => {
       />
 
       {/* Header - same style as PageLayout title section */}
-      <div className="pt-32 pb-16 border-b border-emerald-200/60 bg-gradient-to-b from-emerald-50/80 to-white">
-        <div className="container mx-auto px-6">
-          <Link href="/" className="text-emerald-600 hover:text-emerald-700 text-sm mb-4 inline-block">
+      <div className="pt-24 sm:pt-28 md:pt-32 pb-10 sm:pb-16 border-b border-emerald-200/60 bg-gradient-to-b from-emerald-50/80 to-white">
+        <div className="container mx-auto px-4 sm:px-6">
+          <Link href="/" className="text-emerald-600 hover:text-emerald-700 text-sm mb-4 inline-block min-h-[44px] flex items-center w-fit touch-manipulation">
             ← Back to Home
           </Link>
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Privacy Policy</h1>
-          <p className="text-xl text-gray-600 max-w-3xl">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">Privacy Policy</h1>
+          <p className="text-base sm:text-xl text-gray-600 max-w-3xl">
             How we collect, use, and protect your information.
           </p>
         </div>
       </div>
 
       {/* Content */}
-      <div className="py-16">
-        <div className="container mx-auto px-6 max-w-3xl">
+      <div className="py-10 sm:py-16">
+        <div className="container mx-auto px-4 sm:px-6 max-w-3xl">
           <p className="text-gray-500 text-sm mb-8">
             Last updated: January 2025
           </p>
@@ -78,9 +78,9 @@ const PrivacyPageContent = () => {
           <section className="mb-10">
             <h2 className="text-xl font-bold text-gray-900 mb-3">2. Information we collect</h2>
             <ul className="list-disc list-inside text-gray-600 text-sm space-y-2 mb-3">
-              <li><strong className="text-gray-800">Contact and account information</strong> — name, email, phone number, company name, and similar details when you book a demo or sign up.</li>
-              <li><strong className="text-gray-800">Voice and call data</strong> — when you use our live demo or AI receptionist: voice audio, call recordings, and transcriptions of conversations.</li>
-              <li><strong className="text-gray-800">Usage and technical data</strong> — how you use our site (e.g. pages visited), IP address, browser type, and device information.</li>
+              <li><strong className="text-gray-800">Contact and account information</strong>: name, email, phone number, company name, and similar details when you book a demo or sign up.</li>
+              <li><strong className="text-gray-800">Voice and call data</strong>-when you use our live demo or AI receptionist: voice audio, call recordings, and transcriptions of conversations.</li>
+              <li><strong className="text-gray-800">Usage and technical data</strong>: how you use our site (e.g. pages visited), IP address, browser type, and device information.</li>
             </ul>
           </section>
 
@@ -142,10 +142,10 @@ const PrivacyPageContent = () => {
             <h2 className="text-xl font-bold text-gray-900 mb-3">8. Your rights</h2>
             <p className="text-gray-600 text-sm leading-relaxed mb-3">Depending on where you live, you may have the right to:</p>
             <ul className="list-disc list-inside text-gray-600 text-sm space-y-2">
-              <li><strong className="text-gray-800">Access</strong> — request a copy of the personal data we hold about you.</li>
-              <li><strong className="text-gray-800">Correction</strong> — ask us to correct inaccurate or incomplete data.</li>
-              <li><strong className="text-gray-800">Deletion</strong> — request deletion of your personal data, subject to legal and operational requirements.</li>
-              <li><strong className="text-gray-800">Opt-out</strong> — unsubscribe from marketing emails and, where applicable, object to or restrict certain processing.</li>
+              <li><strong className="text-gray-800">Access</strong>-request a copy of the personal data we hold about you.</li>
+              <li><strong className="text-gray-800">Correction</strong>: ask us to correct inaccurate or incomplete data.</li>
+              <li><strong className="text-gray-800">Deletion</strong>-request deletion of your personal data, subject to legal and operational requirements.</li>
+              <li><strong className="text-gray-800">Opt-out</strong>: unsubscribe from marketing emails and, where applicable, object to or restrict certain processing.</li>
             </ul>
             <p className="text-gray-600 text-sm leading-relaxed mt-3">
               To exercise these rights or ask questions, contact us using the details at the end of this policy. If you are in the EEA/UK, you also have the right to lodge a complaint with your local data protection authority.

@@ -4,9 +4,10 @@ import { Phone, Users, CheckCircle, Rocket, ArrowRight, Calendar } from 'lucide-
 
 interface SetupProcessSectionProps {
   openModal: () => void;
+  openVoiceModal?: () => void;
 }
 
-const SetupProcessSection = ({ openModal }: SetupProcessSectionProps) => {
+const SetupProcessSection = ({ openModal, openVoiceModal }: SetupProcessSectionProps) => {
   const steps = [
     {
       number: '1',
@@ -35,10 +36,10 @@ const SetupProcessSection = ({ openModal }: SetupProcessSectionProps) => {
   ];
 
   return (
-    <section className="py-32 bg-emerald-50">
-      <div className="container mx-auto px-6">
+    <section className="py-16 sm:py-24 md:py-32 bg-emerald-50">
+      <div className="container mx-auto px-4 sm:px-6">
         <div className="max-w-6xl mx-auto">
-          <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8 mb-16">
+          <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6 sm:gap-8 mb-12 sm:mb-16">
             <div className="max-w-2xl">
               <p className="text-base font-normal text-emerald-800 mb-3">
                 Setup
@@ -50,10 +51,10 @@ const SetupProcessSection = ({ openModal }: SetupProcessSectionProps) => {
                 A simple onboarding process to ensure your AI receptionist provides the perfect, quality responses your customers deserve.
               </p>
             </div>
-            <div className="flex flex-col items-stretch lg:items-stretch gap-4 flex-shrink-0 w-full min-w-[240px] max-w-[280px]">
+            <div className="flex flex-col items-stretch lg:items-stretch gap-3 sm:gap-4 flex-shrink-0 w-full min-w-0 sm:min-w-[240px] max-w-full lg:max-w-[280px]">
               <button 
                 onClick={openModal}
-                className="w-full px-7 py-3 rounded-full bg-emerald-600 text-white font-semibold text-sm hover:bg-emerald-700 transition-all duration-300 shadow-lg flex items-center justify-center gap-2"
+                className="w-full px-7 py-3.5 min-h-[48px] rounded-full bg-emerald-600 text-white font-semibold text-sm hover:bg-emerald-700 transition-all duration-300 shadow-lg flex items-center justify-center gap-2 touch-manipulation"
               >
                 <Calendar className="w-4 h-4" />
                 Book Free Demo
@@ -61,7 +62,7 @@ const SetupProcessSection = ({ openModal }: SetupProcessSectionProps) => {
               <button
                 type="button"
                 onClick={() => openVoiceModal?.()}
-                className="w-full px-7 py-3 rounded-full bg-white border-2 border-emerald-600 text-emerald-600 font-semibold text-sm hover:bg-emerald-50 transition-all duration-300 flex items-center justify-center gap-2"
+                className="w-full px-7 py-3.5 min-h-[48px] rounded-full bg-white border-2 border-emerald-600 text-emerald-600 font-semibold text-sm hover:bg-emerald-50 transition-all duration-300 flex items-center justify-center gap-2 touch-manipulation"
               >
                 <Phone className="w-4 h-4" />
                 Call Demo Receptionist

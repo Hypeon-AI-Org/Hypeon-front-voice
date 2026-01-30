@@ -38,14 +38,13 @@ const PageLayout = ({ children, title, description }: PageLayoutProps) => {
   };
 
   return (
-    <div className="min-h-screen bg-[#020408] text-slate-300 font-sans selection:bg-emerald-500/30 selection:text-emerald-200 overflow-x-hidden relative">
+    <div className="min-h-screen bg-white text-gray-900 font-sans selection:bg-emerald-200 selection:text-emerald-900 overflow-x-hidden relative">
       
-      {/* Ambient Background Glows */}
+      {/* Ambient Background Glows - same as main page */}
       <div className="fixed inset-0 overflow-hidden -z-10 pointer-events-none">
-        <div className="absolute top-[-10%] left-[-10%] w-[800px] h-[800px] bg-emerald-900/10 rounded-full blur-[120px]" />
-        <div className="absolute top-[20%] right-[-20%] w-[600px] h-[600px] bg-teal-900/10 rounded-full blur-[100px]" />
-        <div className="absolute bottom-[-10%] left-[20%] w-[500px] h-[500px] bg-green-900/10 rounded-full blur-[100px]" />
-        <div className="absolute inset-0 grid-bg opacity-30"></div>
+        <div className="absolute top-[-10%] left-[-10%] w-[800px] h-[800px] bg-emerald-100/50 rounded-full blur-[120px]" />
+        <div className="absolute top-[20%] right-[-20%] w-[600px] h-[600px] bg-emerald-200/40 rounded-full blur-[100px]" />
+        <div className="absolute bottom-[-10%] left-[20%] w-[500px] h-[500px] bg-green-100/50 rounded-full blur-[100px]" />
       </div>
 
       <Navigation 
@@ -57,8 +56,8 @@ const PageLayout = ({ children, title, description }: PageLayoutProps) => {
       />
       
       {title && (
-        <div className="pt-32 pb-16 border-b border-emerald-200 bg-gradient-to-b from-emerald-50 to-white">
-          <div className="container mx-auto px-6">
+        <div className="pt-24 sm:pt-28 md:pt-32 pb-10 sm:pb-16 border-b border-emerald-200/60 bg-gradient-to-b from-emerald-50/80 to-white">
+          <div className="container mx-auto px-4 sm:px-6">
             <Link href="/" className="text-emerald-600 hover:text-emerald-700 text-sm mb-4 inline-block">
               ← Back to Home
             </Link>

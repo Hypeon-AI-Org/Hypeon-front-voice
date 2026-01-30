@@ -122,7 +122,7 @@ export default function PricingPage() {
               </div>
               <div className="glass-card p-6 rounded-xl">
                 <h3 className="text-lg font-bold text-gray-900 mb-2">What happens if I exceed my call limit?</h3>
-                <p className="text-gray-600">We'll notify you when you're approaching your limit. You can upgrade your plan or purchase additional call credits.</p>
+                <p className="text-gray-600">We&apos;ll notify you when you&apos;re approaching your limit. You can upgrade your plan or purchase additional call credits.</p>
               </div>
               <div className="glass-card p-6 rounded-xl">
                 <h3 className="text-lg font-bold text-gray-900 mb-2">Is there a setup fee?</h3>
@@ -130,7 +130,7 @@ export default function PricingPage() {
               </div>
               <div className="glass-card p-6 rounded-xl">
                 <h3 className="text-lg font-bold text-gray-900 mb-2">Do you offer refunds?</h3>
-                <p className="text-gray-600">Yes, we offer a 30-day money-back guarantee. If you're not satisfied, we'll refund your first month.</p>
+                <p className="text-gray-600">Yes, we offer a 30-day money-back guarantee. If you&apos;re not satisfied, we&apos;ll refund your first month.</p>
               </div>
             </div>
           </div>

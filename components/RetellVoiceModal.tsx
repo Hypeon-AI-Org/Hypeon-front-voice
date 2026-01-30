@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, useRef, useCallback } from 'react';
+import { createPortal } from 'react-dom';
 import Link from 'next/link';
 import { X, Phone, PhoneOff, Loader2, Mic } from 'lucide-react';
 
@@ -19,12 +20,24 @@ const RetellVoiceModal = ({ isOpen, onClose }: RetellVoiceModalProps) => {
   const clientRef = useRef<{ startCall: (c: { accessToken: string }) => Promise<void>; stopCall: () => void; on: (e: string, fn: () => void) => void } | null>(null);
 
   const stopCall = useCallback(() => {
-    if (clientRef.current) {
-      try {
-        clientRef.current.stopCall();
-      } catch (_) {}
-      clientRef.current = null;
+    // Prevent multiple rapid calls to stopCall
+    if (!clientRef.current) {
+      setStatus('ended');
+      return;
     }
+    
+    const client = clientRef.current;
+    clientRef.current = null; // Clear ref immediately to prevent double calls
+    
+    try {
+      // Stop the call - SDK may log "could not removeTrack" warnings during cleanup
+      // This is non-critical: WebRTC tracks may already be removed/invalid, but cleanup still succeeds
+      client.stopCall();
+    } catch (err) {
+      // Ignore cleanup errors - they're non-critical
+      // The SDK handles cleanup internally even if errors occur
+    }
+    
     setStatus('ended');
   }, []);
 
@@ -126,8 +139,6 @@ const RetellVoiceModal = ({ isOpen, onClose }: RetellVoiceModalProps) => {
     return () => window.removeEventListener('keydown', handleEscape);
   }, [isOpen, handleClose]);
 
-  if (!isOpen) return null;
-
   const statusLabel =
     status === 'connecting'
       ? 'Connecting…'
@@ -139,22 +150,33 @@ const RetellVoiceModal = ({ isOpen, onClose }: RetellVoiceModalProps) => {
             ? 'Error'
             : '';
 
-  return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-fadeIn">
-      <div className="relative w-full max-w-sm bg-white border border-emerald-200 rounded-3xl shadow-2xl shadow-emerald-500/20 animate-slideUp">
+  const modalContent = (
+    <div
+      className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-fadeIn overflow-y-auto"
+      onClick={handleClose}
+      role="presentation"
+    >
+      <div
+        className="relative z-10 w-full max-w-sm my-auto max-h-[90vh] overflow-y-auto bg-white border border-emerald-200 rounded-2xl md:rounded-3xl shadow-2xl shadow-emerald-500/20 animate-slideUp pointer-events-auto"
+        onClick={(e) => e.stopPropagation()}
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="retell-modal-title"
+      >
         <button
+          type="button"
           onClick={handleClose}
-          className="absolute top-3 right-3 text-gray-400 hover:text-gray-600 transition-colors z-10"
+          className="absolute top-3 right-3 min-h-[44px] min-w-[44px] flex items-center justify-center text-gray-400 hover:text-gray-600 transition-colors z-10 touch-manipulation"
           aria-label="Close"
         >
           <X className="w-4 h-4" />
         </button>
 
-        <div className="p-6">
+        <div className="p-4 sm:p-6">
           <div className="w-12 h-12 rounded-full bg-emerald-100 border border-emerald-300 flex items-center justify-center mx-auto mb-4">
             <Phone className="w-6 h-6 text-emerald-600" />
           </div>
-          <h2 className="text-xl font-bold text-gray-900 text-center mb-2">Live demo</h2>
+          <h2 id="retell-modal-title" className="text-xl font-bold text-gray-900 text-center mb-2">Live demo</h2>
           <p className="text-gray-600 text-sm text-center mb-3">
             Ask questions about how HypeOn works, or speak with an example dental receptionist.
           </p>
@@ -165,7 +187,7 @@ const RetellVoiceModal = ({ isOpen, onClose }: RetellVoiceModalProps) => {
                 <button
                   type="button"
                   onClick={handleStartCall}
-                  className="flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-emerald-600 text-white font-semibold text-sm hover:bg-emerald-700 transition-colors"
+                  className="flex items-center justify-center gap-2 px-6 py-3.5 min-h-[48px] rounded-xl bg-emerald-600 text-white font-semibold text-sm hover:bg-emerald-700 transition-colors touch-manipulation w-full sm:w-auto"
                 >
                   <Mic className="w-4 h-4" />
                   Start live demo
@@ -208,7 +230,7 @@ const RetellVoiceModal = ({ isOpen, onClose }: RetellVoiceModalProps) => {
                     <p className="font-semibold text-gray-700 mb-1">If you already set Microphone to Allow:</p>
                     <ul className="list-disc list-inside space-y-1 mb-2">
                       <li>Do a <strong>hard refresh</strong> (Ctrl+Shift+R or Cmd+Shift+R).</li>
-                      <li>Use the <strong>exact same URL</strong> you allowed (e.g. <code className="bg-gray-200 px-1 rounded">http://localhost:3000</code> — not <code className="bg-gray-200 px-1 rounded">http://127.0.0.1:3000</code>).</li>
+                      <li>Use the <strong>exact same URL</strong> you allowed (e.g. <code className="bg-gray-200 px-1 rounded">http://localhost:3000</code>, not <code className="bg-gray-200 px-1 rounded">http://127.0.0.1:3000</code>).</li>
                       <li>Close other tabs that might be using the microphone.</li>
                     </ul>
                     <p className="font-semibold text-gray-700 mb-1">To allow the microphone:</p>
@@ -234,7 +256,7 @@ const RetellVoiceModal = ({ isOpen, onClose }: RetellVoiceModalProps) => {
               <button
                 type="button"
                 onClick={stopCall}
-                className="flex-1 flex items-center justify-center gap-2 py-3 rounded-xl bg-red-600 text-white font-semibold text-sm hover:bg-red-700 transition-colors"
+                className="flex-1 flex items-center justify-center gap-2 py-3.5 min-h-[48px] rounded-xl bg-red-600 text-white font-semibold text-sm hover:bg-red-700 transition-colors touch-manipulation"
               >
                 <PhoneOff className="w-4 h-4" />
                 End call
@@ -244,7 +266,7 @@ const RetellVoiceModal = ({ isOpen, onClose }: RetellVoiceModalProps) => {
               <button
                 type="button"
                 onClick={handleStartCall}
-                className="flex-1 flex items-center justify-center gap-2 py-3 rounded-xl bg-emerald-600 text-white font-semibold text-sm hover:bg-emerald-700 transition-colors"
+                className="flex-1 flex items-center justify-center gap-2 py-3.5 min-h-[48px] rounded-xl bg-emerald-600 text-white font-semibold text-sm hover:bg-emerald-700 transition-colors touch-manipulation"
               >
                 <Mic className="w-4 h-4" />
                 Start live demo
@@ -253,7 +275,7 @@ const RetellVoiceModal = ({ isOpen, onClose }: RetellVoiceModalProps) => {
             <button
               type="button"
               onClick={handleClose}
-              className="flex-1 flex items-center justify-center gap-2 py-3 rounded-xl bg-gray-200 text-gray-800 font-semibold text-sm hover:bg-gray-300 transition-colors min-w-[100px]"
+              className="flex-1 flex items-center justify-center gap-2 py-3.5 min-h-[48px] rounded-xl bg-gray-200 text-gray-800 font-semibold text-sm hover:bg-gray-300 transition-colors min-w-[100px] touch-manipulation"
             >
               Close
             </button>
@@ -262,6 +284,10 @@ const RetellVoiceModal = ({ isOpen, onClose }: RetellVoiceModalProps) => {
       </div>
     </div>
   );
+
+  if (!isOpen) return null;
+  if (typeof document === 'undefined') return null;
+  return createPortal(modalContent, document.body);
 };
 
 export default RetellVoiceModal;

@@ -33,7 +33,7 @@ export default function HowItWorksPage() {
                 <div className="glass-card p-8 rounded-2xl">
                   <h3 className="text-xl font-bold text-gray-900 mb-4">Natural Conversations</h3>
                   <p className="text-gray-600">
-                    Our AI speaks naturally and understands context, just like a real receptionist would. Customers won't even notice the difference.
+                    Our AI speaks naturally and understands context, just like a real receptionist would. Customers won&apos;t even notice the difference.
                   </p>
                 </div>
                 <div className="glass-card p-8 rounded-2xl">

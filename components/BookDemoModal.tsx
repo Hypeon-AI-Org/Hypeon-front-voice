@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { X, Mail, User, Phone, Building2, Send, CheckCircle, Calendar } from 'lucide-react';
+import { X, Mail, User, Phone, Building2, CheckCircle, Calendar } from 'lucide-react';
 
 interface BookDemoModalProps {
   isOpen: boolean;
@@ -53,7 +53,7 @@ const BookDemoModal = ({ isOpen, onClose }: BookDemoModalProps) => {
       } else {
         setError(data.error || 'Something went wrong. Please try again.');
       }
-    } catch (err) {
+    } catch {
       setError('Failed to send. Please try again or email us directly.');
     } finally {
       setIsSubmitting(false);
@@ -63,12 +63,14 @@ const BookDemoModal = ({ isOpen, onClose }: BookDemoModalProps) => {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-fadeIn">
-      <div className="relative w-full max-w-sm bg-white border border-emerald-200 rounded-3xl shadow-2xl shadow-emerald-500/20 animate-slideUp">
+    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-fadeIn overflow-y-auto">
+      <div className="relative w-full max-w-sm my-auto max-h-[90vh] overflow-y-auto bg-white border border-emerald-200 rounded-2xl md:rounded-3xl shadow-2xl shadow-emerald-500/20 animate-slideUp">
         {/* Close Button */}
         <button
+          type="button"
           onClick={onClose}
-          className="absolute top-3 right-3 text-gray-400 hover:text-gray-600 transition-colors z-10"
+          className="absolute top-3 right-3 min-h-[44px] min-w-[44px] flex items-center justify-center text-gray-400 hover:text-gray-600 transition-colors z-10 touch-manipulation"
+          aria-label="Close"
         >
           <X className="w-4 h-4" />
         </button>
@@ -199,7 +201,7 @@ const BookDemoModal = ({ isOpen, onClose }: BookDemoModalProps) => {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full py-3 px-7 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-sm rounded-full transition-all duration-300 shadow-[0_0_20px_rgba(16,185,129,0.3)] hover:shadow-[0_0_30px_rgba(16,185,129,0.5)] disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+              className="w-full py-3.5 min-h-[48px] px-7 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-sm rounded-full transition-all duration-300 shadow-[0_0_20px_rgba(16,185,129,0.3)] hover:shadow-[0_0_30px_rgba(16,185,129,0.5)] disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 touch-manipulation"
             >
               {isSubmitting ? (
                 <>

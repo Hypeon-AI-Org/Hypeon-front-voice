@@ -7,10 +7,9 @@ interface FeatureCardProps {
   icon: LucideIcon;
   title: string;
   desc: string;
-  accent: string;
 }
 
-const FeatureCard = ({ icon: Icon, title, desc, accent }: FeatureCardProps) => (
+const FeatureCard = ({ icon: Icon, title, desc }: FeatureCardProps) => (
   <div className="p-8 rounded-3xl border border-emerald-200 bg-white hover:border-emerald-400 transition-all duration-300 group shadow-sm">
     <div className="mb-6 p-4 rounded-2xl bg-emerald-50 inline-block text-emerald-600 group-hover:bg-emerald-100 transition-colors">
       <Icon size={28} />
@@ -22,13 +21,13 @@ const FeatureCard = ({ icon: Icon, title, desc, accent }: FeatureCardProps) => (
 
 const SolutionSection = () => {
   return (
-    <section id="solution" className="py-32 bg-white border-y border-emerald-200 relative overflow-hidden">
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-px bg-gradient-to-r from-transparent via-emerald-400 to-transparent"></div>
+    <section id="solution" className="py-16 sm:py-24 md:py-32 bg-white border-y border-emerald-200 relative overflow-hidden">
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] max-w-[100vw] h-px bg-gradient-to-r from-transparent via-emerald-400 to-transparent"></div>
       
-      <div className="container mx-auto px-6">
-        <div className="text-center max-w-4xl mx-auto mb-20">
+      <div className="container mx-auto px-4 sm:px-6">
+        <div className="text-center max-w-4xl mx-auto mb-12 sm:mb-20">
           <h2 className="text-sm font-bold tracking-[0.2em] text-emerald-600 uppercase mb-4">The Solution</h2>
-          <h3 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900">
+          <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 text-gray-900">
             Meet your <span className="text-emerald-600">AI Voice Receptionist</span>
           </h3>
           <p className="text-gray-700 text-xl leading-relaxed mb-6">
@@ -44,19 +43,16 @@ const SolutionSection = () => {
             icon={Mic}
             title="Natural Voice"
             desc="Customers talk like they would to a real receptionist. It understands nuance."
-            accent="emerald"
           />
           <FeatureCard 
             icon={Zap}
             title="Instant Action"
             desc="Answers instantly. No waiting on hold. No voicemail."
-            accent="teal"
           />
           <FeatureCard 
             icon={Calendar}
             title="Auto-Booking"
             desc="Synced to your calendar. Appointments are booked and confirmed on the spot."
-            accent="lime"
           />
         </div>
       </div>

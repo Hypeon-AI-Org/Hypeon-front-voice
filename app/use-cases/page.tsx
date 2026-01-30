@@ -53,20 +53,20 @@ export default function UseCasesPage() {
                 <Link
                   key={index}
                   href={useCase.link}
-                  className="glass-card p-8 rounded-2xl hover:border-emerald-500/30 transition-all group"
+                  className="glass-card p-8 rounded-2xl hover:border-emerald-400 transition-all group"
                 >
                   <div className="mb-6">
-                    <div className="w-16 h-16 rounded-xl bg-emerald-500/20 flex items-center justify-center mb-4 group-hover:bg-emerald-500/30 transition-colors">
-                      <useCase.icon className="w-8 h-8 text-emerald-400" />
+                    <div className="w-16 h-16 rounded-xl bg-emerald-100 flex items-center justify-center mb-4 group-hover:bg-emerald-200/80 transition-colors">
+                      <useCase.icon className="w-8 h-8 text-emerald-600" />
                     </div>
-                    <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-emerald-400 transition-colors">
+                    <h3 className="text-2xl font-bold text-gray-900 mb-3 group-hover:text-emerald-600 transition-colors">
                       {useCase.title}
                     </h3>
-                    <p className="text-slate-400 leading-relaxed">
+                    <p className="text-gray-600 leading-relaxed">
                       {useCase.description}
                     </p>
                   </div>
-                  <div className="flex items-center gap-2 text-emerald-500 font-medium group-hover:gap-3 transition-all">
+                  <div className="flex items-center gap-2 text-emerald-600 font-medium group-hover:gap-3 transition-all">
                     Learn more <ArrowRight className="w-4 h-4" />
                   </div>
                 </Link>
@@ -89,7 +89,7 @@ export default function UseCasesPage() {
               ))}
             </div>
             <p className="text-center text-gray-600 mt-8">
-              Don't see your industry? <Link href="/" className="text-emerald-600 hover:text-emerald-700">Contact us</Link> to learn how we can help.
+              Don&apos;t see your industry? <Link href="/" className="text-emerald-600 hover:text-emerald-700">Contact us</Link> to learn how we can help.
             </p>
           </div>
         </section>
