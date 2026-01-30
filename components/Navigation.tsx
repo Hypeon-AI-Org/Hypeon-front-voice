@@ -1,7 +1,8 @@
 'use client';
 
-import { Mic, Menu, X, ChevronDown, Calendar } from 'lucide-react';
+import { Menu, X, ChevronDown, Calendar } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 
@@ -44,11 +45,15 @@ const Navigation = ({ scrolled, isMenuOpen, toggleMenu, scrollToSection, openMod
     <nav className={`fixed w-full z-50 transition-all duration-500 border-b ${scrolled ? 'bg-white/30 backdrop-blur-xl border-white/20 py-4 shadow-lg' : 'bg-white/20 backdrop-blur-xl border-white/20 py-6'}`}>
       <div className="w-full px-8 md:px-16 lg:px-24">
         <div className="max-w-7xl mx-auto flex justify-center items-center gap-6 md:gap-8 lg:gap-12 relative">
-          {/* Logo */}
+          {/* Logo - favicon */}
           <Link href="/" className="text-xl font-bold tracking-tight flex items-center gap-3">
-            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-emerald-500 to-emerald-600 flex items-center justify-center shadow-[0_0_15px_rgba(16,185,129,0.3)]">
-              <Mic className="w-4 h-4 text-white fill-current" />
-            </div>
+            <Image
+              src="/favicon.svg"
+              alt="HypeOn-Voice"
+              width={32}
+              height={32}
+              className="w-8 h-8"
+            />
             <span className="text-gray-900 font-medium">
               HypeOn<span className="text-emerald-600">-Voice</span>
             </span>

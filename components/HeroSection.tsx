@@ -63,6 +63,7 @@ const HeroSection = ({ openModal, openVoiceModal }: HeroSectionProps) => {
                   src="/asserts/hero_image.png"
                   alt="AI Receptionist"
                   fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
                   className="object-contain"
                   priority
                 />

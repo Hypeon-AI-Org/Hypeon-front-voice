@@ -304,6 +304,7 @@ const AIPhoneSupportSection = ({ openVoiceModal }: AIPhoneSupportSectionProps) =
                     src="/asserts/AI Phone_image.png"
                     alt="AI Phone Support"
                     fill
+                    sizes="(max-width: 768px) 100vw, 520px"
                     className="object-cover scale-[1.15]"
                     priority
                   />

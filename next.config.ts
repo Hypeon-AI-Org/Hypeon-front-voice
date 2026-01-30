@@ -1,9 +1,13 @@
 import type { NextConfig } from "next";
+import path from "path";
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
-  
+
+  // Use project root for file tracing (avoids multiple-lockfile warning)
+  outputFileTracingRoot: path.join(process.cwd()),
+
   // Production optimizations
   compress: true,
   

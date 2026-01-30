@@ -82,3 +82,10 @@ Thumbs.db
 
 # Build artifacts
 .turbo
+
+# Cursor / IDE
+.cursor
+mcps
+
+# Terminals (session state)
+terminals/
