@@ -11,12 +11,12 @@ const FAQItem = ({ q, a }: FAQItemProps) => {
   const [isOpen, setIsOpen] = useState(false);
   
   return (
-    <div className="glass-card rounded-xl overflow-hidden cursor-pointer" onClick={() => setIsOpen(!isOpen)}>
+    <div className="glass-card rounded-xl overflow-hidden cursor-pointer border border-emerald-200" onClick={() => setIsOpen(!isOpen)}>
        <div className="p-6 flex justify-between items-center">
-          <h4 className="font-bold text-white">{q}</h4>
-          <span className="text-emerald-500 text-xl">{isOpen ? '−' : '+'}</span>
+          <h4 className="font-bold text-gray-900">{q}</h4>
+          <span className="text-emerald-600 text-xl">{isOpen ? '−' : '+'}</span>
        </div>
-       <div className={`px-6 pb-6 text-slate-400 transition-all ${isOpen ? 'block' : 'hidden'}`}>
+       <div className={`px-6 pb-6 text-gray-600 transition-all ${isOpen ? 'block' : 'hidden'}`}>
           {a}
        </div>
     </div>
@@ -44,9 +44,9 @@ const FAQSection = () => {
   ];
 
   return (
-    <section id="faqs" className="py-32 bg-white/[0.02]">
+    <section id="faqs" className="py-32 bg-white">
       <div className="container mx-auto px-6 max-w-3xl">
-         <h2 className="text-3xl font-bold text-white text-center mb-12">Common Questions</h2>
+         <h2 className="text-3xl font-bold text-gray-900 text-center mb-12">Common Questions</h2>
          <div className="space-y-4">
             {faqs.map((faq, index) => (
               <FAQItem key={index} q={faq.q} a={faq.a} />

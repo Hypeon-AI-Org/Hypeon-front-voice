@@ -2,24 +2,24 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Voice.hypeon.ai - AI Voice Receptionist that Books Appointments 24/7",
-  description: "Never miss another booking. Your AI receptionist answers every call instantly, speaks naturally, and books appointments on the spot.",
+  title: "HypeOn-Voice - AI Receptionist for Growing Businesses",
+  description: "Never miss a call. Win more work. Reduce admin. Your AI receptionist manages calls, captures leads, and handles rebookings.",
   keywords: "AI receptionist, voice AI, appointment booking, automated receptionist, business phone system",
   authors: [{ name: "Hypeon.ai" }],
   creator: "Hypeon.ai",
   publisher: "Hypeon.ai",
   metadataBase: new URL('https://voice.hypeon.ai'),
   openGraph: {
-    title: "Voice.hypeon.ai - AI Voice Receptionist",
-    description: "Every call answered. Every booking captured. Even when you're busy, closed, or short-staffed.",
+    title: "HypeOn-Voice - AI Receptionist for Growing Businesses",
+    description: "Never miss a call. Win more work. Reduce admin. Your AI receptionist manages calls, captures leads, and handles rebookings.",
     type: "website",
     url: 'https://voice.hypeon.ai',
-    siteName: "Voice.hypeon.ai",
+    siteName: "HypeOn-Voice",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Voice.hypeon.ai - AI Voice Receptionist",
-    description: "Every call answered. Every booking captured. Even when you're busy, closed, or short-staffed.",
+    title: "HypeOn-Voice - AI Receptionist for Growing Businesses",
+    description: "Never miss a call. Win more work. Reduce admin. Your AI receptionist manages calls, captures leads, and handles rebookings.",
     creator: "@hypeon_ai",
   },
   robots: {

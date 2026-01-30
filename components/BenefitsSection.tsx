@@ -10,11 +10,11 @@ interface BenefitItemProps {
 const BenefitItem = ({ title, desc }: BenefitItemProps) => (
   <div className="flex gap-4">
      <div className="mt-1">
-        <CheckCircle className="w-5 h-5 text-emerald-500" />
+        <CheckCircle className="w-5 h-5 text-emerald-600" />
      </div>
      <div>
-        <h4 className="text-white font-bold">{title}</h4>
-        <p className="text-slate-400 text-sm">{desc}</p>
+        <h4 className="text-gray-900 font-bold">{title}</h4>
+        <p className="text-gray-600 text-sm">{desc}</p>
      </div>
   </div>
 );
@@ -37,13 +37,13 @@ const BenefitsSection = () => {
   ];
 
   return (
-    <section className="py-32 relative">
+    <section className="py-32 relative bg-emerald-50">
       <div className="container mx-auto px-6">
          <div className="grid lg:grid-cols-2 gap-16">
             {/* What You Get */}
             <div>
-              <h3 className="text-2xl font-bold text-white mb-8 border-b border-white/10 pb-4">
-                 What You Get <span className="text-sm font-normal text-slate-500 ml-2">(Real outcomes, not gimmicks)</span>
+              <h3 className="text-2xl font-bold text-gray-900 mb-8 border-b border-emerald-200 pb-4">
+                 What You Get <span className="text-sm font-normal text-gray-500 ml-2">(Real outcomes, not gimmicks)</span>
               </h3>
               <ul className="space-y-6">
                  {benefits.map((benefit, index) => (
@@ -53,21 +53,21 @@ const BenefitsSection = () => {
             </div>
 
             {/* Why Businesses Switch */}
-            <div className="bg-emerald-900/10 rounded-3xl p-8 border border-emerald-500/20 relative overflow-hidden">
-               <div className="absolute top-0 right-0 p-32 bg-emerald-500/10 rounded-full blur-3xl -mr-16 -mt-16"></div>
-               <h3 className="text-2xl font-bold text-white mb-8">
+            <div className="bg-emerald-100 rounded-3xl p-8 border border-emerald-300 relative overflow-hidden shadow-lg">
+               <div className="absolute top-0 right-0 p-32 bg-emerald-200/50 rounded-full blur-3xl -mr-16 -mt-16"></div>
+               <h3 className="text-2xl font-bold text-gray-900 mb-8">
                  Why Businesses Switch
-              </h3>
-              <div className="grid gap-4">
+               </h3>
+               <div className="grid gap-4">
                 {reasons.map((item, i) => (
-                   <div key={i} className="flex items-center gap-3 bg-black/40 p-4 rounded-xl border border-white/5">
-                      <CheckCircle className="w-5 h-5 text-emerald-500" />
-                      <span className="text-slate-200 font-medium">{item}</span>
+                   <div key={i} className="flex items-center gap-3 bg-white p-4 rounded-xl border border-emerald-200">
+                      <CheckCircle className="w-5 h-5 text-emerald-600" />
+                      <span className="text-gray-800 font-medium">{item}</span>
                    </div>
                 ))}
               </div>
-              <div className="mt-8 p-4 border-l-2 border-emerald-500 bg-white/5">
-                 <p className="text-emerald-100 italic">&quot;Once it&apos;s live, you&apos;ll wonder why you waited.&quot;</p>
+              <div className="mt-8 p-4 border-l-2 border-emerald-600 bg-white/80 rounded">
+                 <p className="text-gray-700 italic">&quot;Once it&apos;s live, you&apos;ll wonder why you waited.&quot;</p>
               </div>
             </div>
          </div>

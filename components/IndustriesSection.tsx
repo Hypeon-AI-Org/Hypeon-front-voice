@@ -10,24 +10,24 @@ interface IndustryCardProps {
 }
 
 const IndustryCard = ({ icon: Icon, title, desc }: IndustryCardProps) => (
-  <div className="p-6 rounded-2xl border border-white/5 bg-white/[0.02] hover:bg-emerald-500/5 hover:border-emerald-500/20 transition-all cursor-default group">
-     <div className="mb-4 text-emerald-500/70 group-hover:text-emerald-400 transition-colors">
+  <div className="p-6 rounded-2xl border border-emerald-200 bg-white hover:bg-emerald-50 hover:border-emerald-300 transition-all cursor-default group shadow-sm">
+     <div className="mb-4 text-emerald-600 group-hover:text-emerald-700 transition-colors">
         <Icon size={28} />
      </div>
-     <h3 className="text-lg font-bold text-white mb-2">{title}</h3>
-     <p className="text-sm text-slate-400 group-hover:text-slate-300 leading-relaxed">{desc}</p>
+     <h3 className="text-lg font-bold text-gray-900 mb-2">{title}</h3>
+     <p className="text-sm text-gray-600 group-hover:text-gray-700 leading-relaxed">{desc}</p>
   </div>
 );
 
 const IndustriesSection = () => {
   return (
-    <section id="industries" className="py-32 bg-white/[0.02] border-t border-white/5">
+    <section id="industries" className="py-32 bg-white border-t border-emerald-200">
       <div className="container mx-auto px-6">
          <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
-            Built for <span className="text-emerald-500">Real Local Businesses</span>
+          <h2 className="text-3xl md:text-5xl font-bold text-gray-900 mb-6">
+            Built for <span className="text-emerald-600">Real Local Businesses</span>
           </h2>
-          <p className="text-slate-400">Same system. Tailored to how your business actually works.</p>
+          <p className="text-gray-600">Same system. Tailored to how your business actually works.</p>
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">

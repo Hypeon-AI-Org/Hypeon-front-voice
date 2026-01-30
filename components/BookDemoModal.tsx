@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { X, Mail, User, Phone, Building2, Send, CheckCircle } from 'lucide-react';
+import { X, Mail, User, Phone, Building2, Send, CheckCircle, Calendar } from 'lucide-react';
 
 interface BookDemoModalProps {
   isOpen: boolean;
@@ -64,22 +64,22 @@ const BookDemoModal = ({ isOpen, onClose }: BookDemoModalProps) => {
 
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-fadeIn">
-      <div className="relative w-full max-w-sm bg-[#0a0f14] border border-white/10 rounded-3xl shadow-2xl shadow-emerald-500/10 animate-slideUp">
+      <div className="relative w-full max-w-sm bg-white border border-emerald-200 rounded-3xl shadow-2xl shadow-emerald-500/20 animate-slideUp">
         {/* Close Button */}
         <button
           onClick={onClose}
-          className="absolute top-3 right-3 text-slate-400 hover:text-white transition-colors z-10"
+          className="absolute top-3 right-3 text-gray-400 hover:text-gray-600 transition-colors z-10"
         >
           <X className="w-4 h-4" />
         </button>
 
         {/* Header */}
-        <div className="p-5 border-b border-white/10">
-          <div className="w-10 h-10 rounded-full bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center mb-3">
-            <Mail className="w-5 h-5 text-emerald-400" />
+        <div className="p-5 border-b border-emerald-200">
+          <div className="w-10 h-10 rounded-full bg-emerald-100 border border-emerald-300 flex items-center justify-center mb-3">
+            <Mail className="w-5 h-5 text-emerald-600" />
           </div>
-          <h2 className="text-xl font-bold text-white mb-1">Book a Live Demo</h2>
-          <p className="text-slate-400 text-xs">
+          <h2 className="text-xl font-bold text-gray-900 mb-1">Book Free Demo</h2>
+          <p className="text-gray-600 text-xs">
             See how our AI receptionist handles real calls.
           </p>
         </div>
@@ -87,11 +87,11 @@ const BookDemoModal = ({ isOpen, onClose }: BookDemoModalProps) => {
         {/* Success State */}
         {isSuccess ? (
           <div className="p-6 text-center">
-            <div className="w-14 h-14 rounded-full bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center mx-auto mb-3">
-              <CheckCircle className="w-7 h-7 text-emerald-400" />
+            <div className="w-14 h-14 rounded-full bg-emerald-100 border border-emerald-300 flex items-center justify-center mx-auto mb-3">
+              <CheckCircle className="w-7 h-7 text-emerald-600" />
             </div>
-            <h3 className="text-lg font-bold text-white mb-2">Request Sent!</h3>
-            <p className="text-slate-400 text-sm">
+            <h3 className="text-lg font-bold text-gray-900 mb-2">Request Sent!</h3>
+            <p className="text-gray-600 text-sm">
               We&apos;ll get back to you shortly to schedule your demo.
             </p>
           </div>
@@ -100,18 +100,18 @@ const BookDemoModal = ({ isOpen, onClose }: BookDemoModalProps) => {
           <form onSubmit={handleSubmit} className="p-5 space-y-3">
             {/* Name */}
             <div>
-              <label className="block text-xs font-medium text-slate-300 mb-1.5">
+              <label className="block text-xs font-medium text-gray-700 mb-1.5">
                 Full Name *
               </label>
               <div className="relative">
-                <User className="absolute left-2.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-500" />
+                <User className="absolute left-2.5 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
                 <input
                   type="text"
                   name="name"
                   required
                   value={formData.name}
                   onChange={handleChange}
-                  className="w-full pl-9 pr-3 py-2 text-sm bg-white/5 border border-white/10 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-emerald-500/50 focus:ring-1 focus:ring-emerald-500/50 transition-all"
+                  className="w-full pl-9 pr-3 py-2 text-sm bg-gray-50 border border-emerald-200 rounded-xl text-gray-900 placeholder-gray-400 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-all"
                   placeholder="John Smith"
                 />
               </div>
@@ -119,18 +119,18 @@ const BookDemoModal = ({ isOpen, onClose }: BookDemoModalProps) => {
 
             {/* Email */}
             <div>
-              <label className="block text-xs font-medium text-slate-300 mb-1.5">
+              <label className="block text-xs font-medium text-gray-700 mb-1.5">
                 Email *
               </label>
               <div className="relative">
-                <Mail className="absolute left-2.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-500" />
+                <Mail className="absolute left-2.5 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
                 <input
                   type="email"
                   name="email"
                   required
                   value={formData.email}
                   onChange={handleChange}
-                  className="w-full pl-9 pr-3 py-2 text-sm bg-white/5 border border-white/10 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-emerald-500/50 focus:ring-1 focus:ring-emerald-500/50 transition-all"
+                  className="w-full pl-9 pr-3 py-2 text-sm bg-gray-50 border border-emerald-200 rounded-xl text-gray-900 placeholder-gray-400 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-all"
                   placeholder="john@company.com"
                 />
               </div>
@@ -138,18 +138,18 @@ const BookDemoModal = ({ isOpen, onClose }: BookDemoModalProps) => {
 
             {/* Phone */}
             <div>
-              <label className="block text-xs font-medium text-slate-300 mb-1.5">
+              <label className="block text-xs font-medium text-gray-700 mb-1.5">
                 Phone Number *
               </label>
               <div className="relative">
-                <Phone className="absolute left-2.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-500" />
+                <Phone className="absolute left-2.5 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
                 <input
                   type="tel"
                   name="phone"
                   required
                   value={formData.phone}
                   onChange={handleChange}
-                  className="w-full pl-9 pr-3 py-2 text-sm bg-white/5 border border-white/10 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-emerald-500/50 focus:ring-1 focus:ring-emerald-500/50 transition-all"
+                  className="w-full pl-9 pr-3 py-2 text-sm bg-gray-50 border border-emerald-200 rounded-xl text-gray-900 placeholder-gray-400 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-all"
                   placeholder="+1 (555) 123-4567"
                 />
               </div>
@@ -157,17 +157,17 @@ const BookDemoModal = ({ isOpen, onClose }: BookDemoModalProps) => {
 
             {/* Company */}
             <div>
-              <label className="block text-xs font-medium text-slate-300 mb-1.5">
+              <label className="block text-xs font-medium text-gray-700 mb-1.5">
                 Company Name
               </label>
               <div className="relative">
-                <Building2 className="absolute left-2.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-500" />
+                <Building2 className="absolute left-2.5 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
                 <input
                   type="text"
                   name="company"
                   value={formData.company}
                   onChange={handleChange}
-                  className="w-full pl-9 pr-3 py-2 text-sm bg-white/5 border border-white/10 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-emerald-500/50 focus:ring-1 focus:ring-emerald-500/50 transition-all"
+                  className="w-full pl-9 pr-3 py-2 text-sm bg-gray-50 border border-emerald-200 rounded-xl text-gray-900 placeholder-gray-400 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-all"
                   placeholder="Your Company"
                 />
               </div>
@@ -175,7 +175,7 @@ const BookDemoModal = ({ isOpen, onClose }: BookDemoModalProps) => {
 
             {/* Message */}
             <div>
-              <label className="block text-xs font-medium text-slate-300 mb-1.5">
+              <label className="block text-xs font-medium text-gray-700 mb-1.5">
                 Message (Optional)
               </label>
               <textarea
@@ -183,15 +183,15 @@ const BookDemoModal = ({ isOpen, onClose }: BookDemoModalProps) => {
                 value={formData.message}
                 onChange={handleChange}
                 rows={2}
-                className="w-full px-3 py-2 text-sm bg-white/5 border border-white/10 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-emerald-500/50 focus:ring-1 focus:ring-emerald-500/50 transition-all resize-none"
+                className="w-full px-3 py-2 text-sm bg-gray-50 border border-emerald-200 rounded-xl text-gray-900 placeholder-gray-400 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-all resize-none"
                 placeholder="Tell us about your business..."
               />
             </div>
 
             {/* Error Message */}
             {error && (
-              <div className="p-2.5 bg-red-500/10 border border-red-500/20 rounded-xl">
-                <p className="text-xs text-red-400">{error}</p>
+              <div className="p-2.5 bg-red-50 border border-red-200 rounded-xl">
+                <p className="text-xs text-red-600">{error}</p>
               </div>
             )}
 
@@ -199,22 +199,22 @@ const BookDemoModal = ({ isOpen, onClose }: BookDemoModalProps) => {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full py-2.5 px-4 bg-emerald-500 hover:bg-emerald-400 text-black font-bold rounded-xl transition-all duration-300 shadow-[0_0_20px_rgba(16,185,129,0.3)] hover:shadow-[0_0_30px_rgba(16,185,129,0.5)] disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 text-sm"
+              className="w-full py-3 px-7 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-sm rounded-full transition-all duration-300 shadow-[0_0_20px_rgba(16,185,129,0.3)] hover:shadow-[0_0_30px_rgba(16,185,129,0.5)] disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
             >
               {isSubmitting ? (
                 <>
-                  <div className="w-4 h-4 border-2 border-black/30 border-t-black rounded-full animate-spin" />
+                  <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
                   Sending...
                 </>
               ) : (
                 <>
-                  <Send className="w-4 h-4" />
-                  Book Demo
+                  <Calendar className="w-4 h-4" />
+                  Book Free Demo
                 </>
               )}
             </button>
 
-            <p className="text-[10px] text-slate-500 text-center leading-tight">
+            <p className="text-[10px] text-gray-500 text-center leading-tight">
               We&apos;ll contact you within 24 hours to schedule your demo.
             </p>
           </form>
