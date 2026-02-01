@@ -23,7 +23,6 @@ const Navigation = ({ scrolled, isMenuOpen, toggleMenu, scrollToSection, openMod
     { label: 'How It Works', href: '/how-it-works', scrollId: 'how-it-works' },
     { label: 'Features', href: '/features', scrollId: null },
     { label: 'Pricing', href: '/pricing', scrollId: null },
-    { label: 'Blog', href: '/blog', scrollId: null },
   ];
 
   const useCasesItems = [

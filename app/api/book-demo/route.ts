@@ -1,15 +1,45 @@
 import { NextRequest, NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
+import { rateLimit, getClientIp } from '@/lib/rate-limit';
+import { escapeHtml, isValidEmail, LIMITS, trimToLimit } from '@/lib/sanitize';
+
+const BOOK_DEMO_RATE_LIMIT = 10; // requests per minute per IP
 
 export async function POST(request: NextRequest) {
+  const ip = getClientIp(request);
+  if (!rateLimit(ip, BOOK_DEMO_RATE_LIMIT)) {
+    return NextResponse.json(
+      { error: 'Too many requests. Please try again in a minute.' },
+      { status: 429 }
+    );
+  }
+
   try {
     const body = await request.json();
-    const { name, email, phone, company, message } = body;
+    const raw = {
+      name: body?.name,
+      email: body?.email,
+      phone: body?.phone,
+      company: body?.company,
+      message: body?.message,
+    };
 
-    // Validate required fields
+    const name = trimToLimit(raw.name, LIMITS.name);
+    const email = trimToLimit(raw.email, LIMITS.email);
+    const phone = trimToLimit(raw.phone, LIMITS.phone);
+    const company = trimToLimit(raw.company, LIMITS.company);
+    const message = trimToLimit(raw.message, LIMITS.message);
+
     if (!name || !email || !phone) {
       return NextResponse.json(
         { error: 'Name, email, and phone are required' },
+        { status: 400 }
+      );
+    }
+
+    if (!isValidEmail(email)) {
+      return NextResponse.json(
+        { error: 'Please enter a valid email address' },
         { status: 400 }
       );
     }
@@ -20,14 +50,12 @@ export async function POST(request: NextRequest) {
 
     if (!gmailUser || !gmailAppPassword) {
       console.error('Gmail credentials not configured');
-      // Return success anyway to not expose configuration issues to users
       return NextResponse.json(
         { success: true, message: 'Demo request received' },
         { status: 200 }
       );
     }
 
-    // Create transporter using Gmail SMTP
     const transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
@@ -36,7 +64,12 @@ export async function POST(request: NextRequest) {
       },
     });
 
-    // Email content
+    const safeName = escapeHtml(name);
+    const safeEmail = escapeHtml(email);
+    const safePhone = escapeHtml(phone);
+    const safeCompany = escapeHtml(company || 'Not provided');
+    const safeMessage = escapeHtml(message || 'No message provided');
+
     const emailSubject = `🎯 New Demo Request from ${name}`;
     const emailBody = `
 New Demo Request Received!
@@ -54,18 +87,17 @@ ${message || 'No message provided'}
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-📅 Submitted: ${new Date().toLocaleString('en-US', { 
-  timeZone: 'America/New_York',
-  dateStyle: 'full',
-  timeStyle: 'long'
-})}
+📅 Submitted: ${new Date().toLocaleString('en-US', {
+      timeZone: 'America/New_York',
+      dateStyle: 'full',
+      timeStyle: 'long',
+    })}
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 Reply directly to this email to contact ${name}.
     `.trim();
 
-    // HTML version for better formatting
     const emailHtml = `
 <!DOCTYPE html>
 <html>
@@ -90,31 +122,31 @@ Reply directly to this email to contact ${name}.
     <div class="content">
       <div class="field">
         <span class="label">Name:</span>
-        <span class="value">${name}</span>
+        <span class="value">${safeName}</span>
       </div>
       <div class="field">
         <span class="label">Email:</span>
-        <span class="value"><a href="mailto:${email}">${email}</a></span>
+        <span class="value"><a href="mailto:${safeEmail}">${safeEmail}</a></span>
       </div>
       <div class="field">
         <span class="label">Phone:</span>
-        <span class="value"><a href="tel:${phone}">${phone}</a></span>
+        <span class="value"><a href="tel:${safePhone}">${safePhone}</a></span>
       </div>
       <div class="field">
         <span class="label">Company:</span>
-        <span class="value">${company || 'Not provided'}</span>
+        <span class="value">${safeCompany}</span>
       </div>
       <div class="field">
         <span class="label">Message:</span>
         <div style="background: white; padding: 15px; border-radius: 5px; margin-top: 10px;">
-          ${message || 'No message provided'}
+          ${safeMessage}
         </div>
       </div>
       <div class="footer">
-        <p>Submitted on ${new Date().toLocaleString('en-US', { 
+        <p>Submitted on ${new Date().toLocaleString('en-US', {
           timeZone: 'America/New_York',
           dateStyle: 'full',
-          timeStyle: 'long'
+          timeStyle: 'long',
         })}</p>
       </div>
     </div>
@@ -123,7 +155,6 @@ Reply directly to this email to contact ${name}.
 </html>
     `.trim();
 
-    // Send email
     await transporter.sendMail({
       from: `"Voice.hypeon.ai Demo" <${gmailUser}>`,
       to: 'yash@hypeon.ai',
@@ -139,7 +170,6 @@ Reply directly to this email to contact ${name}.
       { success: true, message: 'Demo request sent successfully' },
       { status: 200 }
     );
-
   } catch (error) {
     console.error('Error processing demo request:', error);
     return NextResponse.json(

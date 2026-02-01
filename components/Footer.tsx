@@ -7,7 +7,7 @@ const Footer = () => {
   return (
     <footer className="bg-emerald-50 py-12 sm:py-16 border-t border-emerald-200">
       <div className="container mx-auto px-4 sm:px-6">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 mb-10 sm:mb-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8 mb-10 sm:mb-12">
           {/* Brand */}
           <div>
             <div className="flex items-center gap-2 mb-4">
@@ -39,15 +39,6 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Resources */}
-          <div>
-            <h3 className="font-bold text-gray-900 mb-4">Resources</h3>
-            <ul className="space-y-1 text-sm">
-              <li><Link href="/blog" className="text-gray-600 hover:text-emerald-600 transition-colors py-2 block min-h-[44px] flex items-center touch-manipulation">Blog</Link></li>
-              <li><Link href="/what-is-ai-receptionist" className="text-gray-600 hover:text-emerald-600 transition-colors py-2 block min-h-[44px] flex items-center touch-manipulation">What is an AI Receptionist?</Link></li>
-              <li><Link href="/ai-vs-virtual-receptionist" className="text-gray-600 hover:text-emerald-600 transition-colors py-2 block min-h-[44px] flex items-center touch-manipulation">AI Receptionist vs Virtual Receptionist</Link></li>
-            </ul>
-          </div>
         </div>
 
         <div className="border-t border-emerald-200 pt-6 sm:pt-8 flex flex-col md:flex-row justify-between items-center gap-4">

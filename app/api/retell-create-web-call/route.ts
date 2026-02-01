@@ -1,6 +1,8 @@
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
+import { rateLimit, getClientIp } from '@/lib/rate-limit';
 
 const RETELL_API_BASE = 'https://api.retellai.com';
+const RETELL_RATE_LIMIT = 20; // requests per minute per IP
 
 /** Retell agent IDs are long alphanumeric strings (e.g. oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD). */
 function looksLikeAgentId(value: string): boolean {
@@ -31,7 +33,15 @@ async function getAgentIdByName(apiKey: string, agentName: string): Promise<stri
  * Creates a Retell web call. Uses RETELL_AGENT_ID if it looks like a real ID;
  * otherwise resolves RETELL_AGENT_ID or RETELL_AGENT_NAME (e.g. "Website-demo") via List Agents API.
  */
-export async function POST() {
+export async function POST(request: NextRequest) {
+  const ip = getClientIp(request);
+  if (!rateLimit(ip, RETELL_RATE_LIMIT)) {
+    return NextResponse.json(
+      { error: 'Too many requests. Please try again in a minute.' },
+      { status: 429 }
+    );
+  }
+
   const apiKey = process.env.RETELL_API_KEY;
   const envAgentId = process.env.RETELL_AGENT_ID?.trim() || null;
   const agentName = process.env.RETELL_AGENT_NAME?.trim() || null;
